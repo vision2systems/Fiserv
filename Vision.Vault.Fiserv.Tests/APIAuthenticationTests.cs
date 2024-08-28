@@ -17,8 +17,8 @@ namespace Vision.Vault.Fiserv.Tests
         public void CanWeGetAnAccessToken()
         {
             var _url = "https://tcbtest.oktapreview.com/oauth2/default/v1/token";
-            var clientId = "0oa23nmnyu4wbmB3C0h8";
-            var secret = "WhO-P_fFLK9CqFhdZJObXy-N0ShwgLTXekEDJdho4QZsPweF3EHWhSiKEcCGBbn6";
+            var clientId = "<clientid>";
+            var secret = "<clientsecret>";
 
             var authProider = new OAuthAccessTokenProvider(_url, HttpMethod.Post, clientId, secret);
 
