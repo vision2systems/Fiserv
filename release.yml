@@ -18,7 +18,7 @@ variables:
   buildConfiguration: 'Release'
 
 jobs:
-- job: SFTP
+- job: Fiserv
   condition: true
   steps:
   - checkout: self
@@ -35,26 +35,13 @@ jobs:
   - task: gitversion/execute@0
     displayName: Determine Git Version
 
-  - task: NuGetToolInstaller@1
-    continueOnError: true
-    displayName: 'Install Nuget'
 
-
-  - task: NuGetAuthenticate@1
-  
-
-  - task: NuGetCommand@2
-    inputs:
-      command: 'restore'
-      restoreSolution: 'Fiserv.sln'
-      feedsToUse: 'config'
-      nugetConfigPath: 'nuget.config'
 
   - task: DotNetCoreCLI@2
     displayName: "Vision Fiserv Restore"
     inputs:
       command: 'restore'
-      projects: ./Vision.Vault.Fiserv/Vision.Vault.Fiserv.csproj
+      projects: ./Fiserv.sln
 
    
 
@@ -100,7 +87,7 @@ jobs:
     inputs:
       command: 'pack'
       arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-      packagesToPack: './Vault.Fiserv/Vault.Fiserv.csproj'
+      packagesToPack: './Vision.Vault.Fiserv/Vision.Vault.Fiserv.csproj'
       versioningScheme: byEnvVar
       versionEnvVar: GitVersion.NuGetVersion
 
