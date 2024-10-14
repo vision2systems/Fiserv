@@ -1,13 +1,14 @@
 # X9 ICL for Deposits and begining of ACH API implementation for NACHA standard API
-This code contains an X-9 implementation of cash imagle letters that has a very simple interface to consume.
+This code contains an X-9 implementation of cash image letters that has a very simple interface.
 
 You start a file, make a few settings, and it will generate an ICL file for deposits only.
 
 ## ICL Serialization
 The rules for ICL records are kept outside of the actual serialization
 of the file.  The serializer for Fiserv has been tested in production with Fiserv sucessfully,  you may need a different serializer
-depending on the target for your ICL files.  I tried to add switches to turn off the Big Endian prefix which for example wells fargo does not require
-so that you can create serializers that match what your bank needs.
+depending on the bank target for your ICL files.  
+
+There are  switches to turn off the Big Endian prefix which for example wells fargo does not require and switches to mark the file as a test file so that  you can create serializers and files that match what your and your bank needs.
 
 The mapping for the ICL file is handled using a flat file nuget package to map the file values and handle the padding. 
 
