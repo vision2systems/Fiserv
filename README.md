@@ -13,38 +13,29 @@ The mapping for the ICL file is handled using a flat file nuget package to map t
 
 ## ICL Example Usage
 
-`var fileBuilder = new ICLFileBuilder();
-
-fileBuilder.ImmediateDestinationRoutingNumber = "999944442";
-fileBuilder.DepositAccountNumber = "11111111111";
-fileBuilder.ImmediateOriginRoutingNumber = "111017979";
-fileBuilder.ContactName = "Joe Smith";
-fileBuilder.ContactPhoneNumber = "2145551212";
-fileBuilder.FileDate = DateTime.UtcNow;
-fileBuilder.ImmediateDestinationName = "Test Bank";
-fileBuilder.ImmediateOriginName = "TESTCompany";
-fileBuilder.CustomerName = "Test";
-
-
-Assert.IsNotNull(fileBuilder);
-using (var cashLetter = fileBuilder.CreateCashLetter(1))
-{
-    Assert.IsNotNull(cashLetter);
-    using (var bundle = cashLetter.CreateBundle(1,1))
+    var fileBuilder = new ICLFileBuilder();
+    fileBuilder.ImmediateDestinationRoutingNumber = "999944442";
+    fileBuilder.DepositAccountNumber = "11111111111";
+    fileBuilder.ImmediateOriginRoutingNumber = "111017979";
+    fileBuilder.ContactName = "Joe Smith";
+    fileBuilder.ContactPhoneNumber = "2145551212";
+    fileBuilder.FileDate = DateTime.UtcNow;
+    fileBuilder.ImmediateDestinationName = "Test Bank";
+    fileBuilder.ImmediateOriginName = "TESTCompany";
+    fileBuilder.CustomerName = "Test";
+    
+    using (var cashLetter = fileBuilder.CreateCashLetter(1))
     {
-        Assert.IsNotNull(bundle);
-        var frontImage = new byte[1024];
-        var backImage = new byte[1024];
-        bundle.AddDepositWithCheckImages(100,"111000614","1111111111","0101",null,frontImage, backImage, 1, DateTime.UtcNow);
+        using (var bundle = cashLetter.CreateBundle(1,1))
+        {        
+            var frontImage = new byte[1024];
+            var backImage = new byte[1024];
+            bundle.AddDepositWithCheckImages(100,"111000614","1111111111","0101",null,frontImage, backImage, 1, DateTime.UtcNow);
+        }
     }
-}
 
-var serializer = new FiservICLFileSerializer();
-var fileName = serializer.GetFileName(fileBuilder);
+    var serializer = new FiservICLFileSerializer();
+    var fileName = serializer.GetFileName(fileBuilder);
+    var bytes = serializer.Serialize(fileBuilder);
 
-
-Assert.IsNotNull(fileName);
-
-var bytes = serializer.Serialize(fileBuilder);
-`
 
