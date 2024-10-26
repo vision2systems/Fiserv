@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Vision.Vault.Fiserv.ImageCashLetter
 {
-    internal class ICLCashLetter
+    public class ICLFile
     {
         internal ICLCashLetterHeaderRecord Header { get; set; } = new ICLCashLetterHeaderRecord();
         internal ICLCashLetterControlRecord Control { get; set; } = new ICLCashLetterControlRecord();

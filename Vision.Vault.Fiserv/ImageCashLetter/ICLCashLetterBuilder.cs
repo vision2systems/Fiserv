@@ -8,7 +8,7 @@ namespace Vision.Vault.Fiserv.ImageCashLetter
     public class ICLCashLetterBuilder : IDisposable
     {
         private readonly ICLFileBuilder _fileBuilder;
-        internal ICLCashLetter CashLetter = new ICLCashLetter();
+        internal ICLFile CashLetter = new ICLFile();
 
         internal ICLCashLetterHeaderRecord CashLetterHeader => CashLetter.Header;
         internal ICLCashLetterControlRecord CashLetterControl => CashLetter.Control;

@@ -20,7 +20,7 @@ namespace Vision.Vault.Fiserv.ImageCashLetter
 
         internal ICLFileHeaderRecord Header { get; set; }
 
-        internal List<ICLCashLetter> CashLetters { get; set; } = new List<ICLCashLetter>();
+        internal List<ICLFile> CashLetters { get; set; } = new List<ICLFile>();
 
 
 
