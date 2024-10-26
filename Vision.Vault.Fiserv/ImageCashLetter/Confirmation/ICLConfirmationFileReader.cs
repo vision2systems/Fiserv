@@ -118,7 +118,7 @@ namespace Vision.Vault.Fiserv.ImageCashLetter.Confirmation
 
         public IFixedLengthLayoutDescriptor FileHeaderLayout()
         {
-            var layout = new FixedLayout<ICLReturnFileHeader>();
+            var layout = new FixedLayout<ICLReturnFileHeaderRecord>();
             if(UseRecordHeader)
             {
                 layout.WithMember(c => c.RecordHeader, x => x.WithLength(4));
@@ -206,6 +206,12 @@ namespace Vision.Vault.Fiserv.ImageCashLetter.Confirmation
                .WithMember(c => c.Reserved, x => x.WithLength(63));
 
             return layout;
+        }
+
+        public void Dispose()
+        {
+            _masterDetailStrategy = null;
+
         }
     }
 }
