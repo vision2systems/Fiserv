@@ -186,7 +186,7 @@ namespace Vision.Vault.Fiserv.ImageCashLetter.Confirmation
                 .WithMember(c => c.TotalRecords, x => x.WithLength(10))
                 .WithMember(c => c.TotalItems, x => x.WithLength(15))
                 .WithMember(c => c.TotalAmount, x => x.WithLength(18).WithConverter(_decimalConverter))
-                .WithMember(c => c.TotalCheckImages, x => x.WithLength(15))
+                .WithMember(c => c.TotalImages, x => x.WithLength(15))
                 .WithMember(c => c.TotalWithStatus01, x => x.WithLength(5))
                 .WithMember(c => c.Reserved, x => x.WithLength(15));
 

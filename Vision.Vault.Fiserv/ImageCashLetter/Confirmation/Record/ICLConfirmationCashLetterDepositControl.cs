@@ -11,7 +11,7 @@ namespace Vision.Vault.Fiserv.ImageCashLetter.Confirmation.Record
 
         public decimal TotalAmount { get; set; }
 
-        public int TotalCheckImages { get; set; }
+        public int TotalImages { get; set; }
 
         public string TotalWithStatus01 { get; set; }
 

@@ -14,7 +14,7 @@ namespace Vision.Vault.Fiserv.ImageCashLetter.Confirmation.Record
         public string FileType { get; set; }
         public DateTime FileCreation { get; set; }
         public int FileRecordLength { get; set; }
-        public string Version { get; set; }
+        public string FileVersion { get; set; }
         public DateTime BusinessDate { get; set; }
         public string FileName { get; set; }
         public string Filler { get; set; }
